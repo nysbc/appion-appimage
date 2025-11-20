@@ -34,10 +34,14 @@ appion: AppRun appion.AppDir appion.repo sinedon.repo
 	$(PYTHON_VENV) python3.10 -m pip install poetry ; \
 	cd $(BUILDDIR)/sinedon.repo ; \
 	$(PYTHON_VENV) poetry lock ; \
-	$(PYTHON_VENV) poetry install ; \
+	$(PYTHON_VENV) poetry install --no-root ; \
+	$(PYTHON_VENV) poetry build ; \
+	$(PYTHON_VENV) pip3.10 install dist/*.whl ; \
 	cd $(BUILDDIR)/appion.repo ; \
 	$(PYTHON_VENV) poetry lock ; \
-	$(PYTHON_VENV) poetry install ; \
+	$(PYTHON_VENV) poetry install --no-root ; \
+	$(PYTHON_VENV) poetry build ; \
+	$(PYTHON_VENV) pip3.10 install dist/*.whl ; \
 	$(CP) $(BUILDDIR)/appion.repo/bin/* $(BUILDDIR)/appion.AppDir/opt/python3.10/bin ; \
 	cd $(BUILDDIR) ; \
 	$(CP) $(BASEDIR)/src/AppRun appion.AppDir/AppRun ; \
