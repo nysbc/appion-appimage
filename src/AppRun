@@ -22,6 +22,7 @@ export TKPATH="${TK_LIBRARY}"
 export SSL_CERT_FILE="${APPDIR}/opt/_internal/certs.pem"
 
 SUBCOMMAND=${1}
+shift
 if [ -z "${SUBCOMMAND}" ] ; then
 	printf "Error: No subcommand was specified.\n"
 	exit 1
