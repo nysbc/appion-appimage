@@ -24,7 +24,7 @@ PYTHON_VENV := PATH=$(BUILDDIR)/appion.AppDir/opt/python3.10/bin:$$PATH PYTHONHO
 
 appion.repo:
 	cd $(BUILDDIR) ; \
-	$(GIT) clone $(APPION_REPO_URL) appion.repo
+	$(GIT) clone -b cryosparc_ingest $(APPION_REPO_URL) appion.repo
 
 sinedon.repo:
 	cd $(BUILDDIR) ; \

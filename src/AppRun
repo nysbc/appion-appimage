@@ -27,5 +27,10 @@ if [ -z "${SUBCOMMAND}" ] ; then
 	printf "Error: No subcommand was specified.\n"
 	exit 1
 fi
-# Call application with same name
-"${APPDIR}/opt/python3.10/bin/python3.10" "${APPDIR}/opt/python3.10/bin/${SUBCOMMAND}" ${@}
+
+if [[ "${SUBCOMMAND}" == "importCryoSparcMotioncor.py" ]] || [[ "${SUBCOMMAND}" == "importCryoSparcCtfEstimation.py" ]] || [[ "${SUBCOMMAND}" == "runJob.py" ]]; then
+	# Call application with same name
+	"${APPDIR}/opt/python3.10/bin/python3.10" "${APPDIR}/opt/python3.10/bin/${SUBCOMMAND}" ${@}
+else
+	"${APPDIR}/opt/python3.10/bin/python3.10" ${SUBCOMMAND} ${@}
+fi
